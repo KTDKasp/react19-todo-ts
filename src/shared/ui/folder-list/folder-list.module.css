@@ -1,0 +1,65 @@
+.folder-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.list-element {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+  align-items: center;
+  padding: 10px 12px;
+}
+
+.active {
+  border-radius: 4px;
+  background-color: #ffffff;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.04);
+  cursor: default;
+}
+
+.green {
+  fill: #42B883;
+}
+
+.grey {
+  fill: #C9D1D3;
+}
+
+.blue {
+  fill: #64C4ED;
+}
+
+.pink {
+  fill: #FFBBCC;
+}
+
+.lime {
+  fill: #B6E6BD;
+}
+
+.purple {
+  fill: #C355F5;
+}
+
+.black {
+  fill: #110133;
+}
+
+.red {
+  fill: #FF6464;
+}
+
+.title {
+  flex: 1
+}
+
+.delete {
+  cursor: pointer;
+}
+
+
