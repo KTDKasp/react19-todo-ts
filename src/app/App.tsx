@@ -1,12 +1,11 @@
-import { Sidebar } from "../shared/components";
+import { Todo } from "src/pages";
+import styles from "./app.module.css";
 
 export default function App() {
   return (
-    <div>
+    <div className={styles.app}>
       <h1>App</h1>
-      <Sidebar>
-        Sidebar
-      </Sidebar>
+      <Todo />
     </div>
   )
 }

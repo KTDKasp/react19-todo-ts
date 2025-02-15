@@ -1,3 +1,7 @@
+:root {
+  --light-grey: #f1f1f1;
+}
+
 /*
   1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
   2. Remove default margins and padding
@@ -32,6 +36,7 @@ html,
   tab-size: 4; /* 3 */
   font-family: var(
     --default-font-family,
+    'Lato',
     ui-sans-serif,
     system-ui,
     sans-serif,
