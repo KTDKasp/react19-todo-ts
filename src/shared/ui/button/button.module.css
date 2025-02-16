@@ -31,7 +31,6 @@
 .add {
   font-weight: 600;
   color: #767676;
-  letter-spacing: 0.15px;
 }
 
 .add:hover {
@@ -40,6 +39,11 @@
 
 .add:hover path {
   stroke: #000000;
+}
+
+.green {
+  color: #ffffff;
+  background-color: #4dd599;
 }
 
 .ghost {

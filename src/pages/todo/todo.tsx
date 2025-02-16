@@ -1,9 +1,10 @@
-import { Button, FolderList, TodoList, TodoSidebar } from "src/shared/ui";
+import { AddFolderForm, Button, FolderList, TodoList, TodoSidebar } from "src/shared/ui";
 import styles from "./todo.module.css";
-import { fetchList, ListItem } from "src/shared/lib/api";
+import { fetchColors, fetchList } from "src/shared/lib/api";
 import { useState } from "react";
 
 const defaultListPromise = fetchList();
+const defaultColorsPromise = fetchColors();
 
 export function Todo() {
   const [tasksPromise, setTasksPromise] = useState(defaultListPromise)
@@ -15,10 +16,7 @@ export function Todo() {
         <Button icon="list">Все задачи</Button>
         <FolderList tasksPromise={tasksPromise} />
         <Button onClick={() => setIsOpened(true)} icon="add" color="grey">Добавить папку</Button>
-        <form style={{ display: isOpened === true ? "block" : "none" }}>
-          <p>Форма для заполнения</p>
-          <button type="button" onClick={() => setIsOpened(false)}>Close</button>
-        </form>
+        {isOpened && <AddFolderForm taskColors={defaultColorsPromise} onClose={() => setIsOpened(false)} />}
       </TodoSidebar>
       <TodoList />
     </div>
