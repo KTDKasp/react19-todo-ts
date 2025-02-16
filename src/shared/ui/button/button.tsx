@@ -1,6 +1,6 @@
 import React from "react";
-import BurgerIcon from "src/../public/burger.svg?react";
-import PlusIcon from "src/../public/plus.svg?react";
+import BurgerIcon from "src/assets/burger.svg?react";
+import PlusIcon from "src/assets/plus.svg?react";
 import { cn } from "src/shared/lib/css";
 import styles from "./button.module.css";
 
