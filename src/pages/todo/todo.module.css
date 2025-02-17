@@ -7,3 +7,15 @@
   border-radius: 10px;
   border: 1px solid var(--light-grey);
 }
+
+.open {
+  opacity: 1;
+  height: auto;
+  overflow: visible;
+}
+
+.close {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}

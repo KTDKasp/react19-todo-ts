@@ -6,21 +6,21 @@
 	border-radius: 10px;
 	width: 235px;
 	position: relative;
-	background-color: #FFFFFF;
+	background-color: #ffffff;
 	box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.05);
 }
 
 .input {
 	font-size: 14px;
 	width: 100%;
-	border: 1px solid #EFEFEF;
+	border: 1px solid #efefef;
 	border-radius: 4px;
 	padding: 8px 10px;
 	outline-color: #c1c1c1;
 }
 
 .input::placeholder {
-	color: #C7C7C7;
+	color: #c7c7c7;
 }
 
 .colors {
@@ -34,4 +34,78 @@
 	right: -6px;
 	top: -6px;
 	cursor: pointer;
+}
+
+.green {
+  background: #42B883;
+}
+
+.grey {
+  background: #C9D1D3;
+}
+
+.blue {
+  background: #64C4ED;
+}
+
+.pink {
+  background: #FFBBCC;
+}
+
+.lime {
+  background: #B6E6BD;
+}
+
+.purple {
+  background: #C355F5;
+}
+
+.black {
+  background: #110133;
+}
+
+.red {
+  background: #FF6464;
+}
+
+.label {
+	cursor: pointer;
+	height: 20px;
+}
+
+.radio-color {
+	width: 0;
+	height: 0;
+	position: absolute;
+	opacity: 0;
+	z-index: -1;
+}
+
+.custom-radio {
+	position: relative;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border-radius: 100%;
+}
+
+.custom-radio::before {
+	content: '';
+	border: 2px solid #525252;
+	position: absolute;
+	border-radius: 100%;
+	width: 20px;
+	height: 20px;
+	background: none;
+	display: inline-block;
+	transform: scale(0);
+}
+
+.radio-color:checked + .custom-radio::before {
+	transform: scale(1);
+}
+
+.error {
+	font-size: 12px;
+	color: rgb(255, 70, 70);
 }

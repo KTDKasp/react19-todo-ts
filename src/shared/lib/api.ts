@@ -1,18 +1,19 @@
-export type ListItem = {
-  id: string
-  name: string;
-  colorId: number;
-}
-
 export type ColorItem = {
-  id: string;
+  id: number;
   hex: string;
   name: string;
 }
 
+export type ListItem = {
+  id: string
+  name: string;
+  colorId: number;
+  color: ColorItem
+}
+
 export async function fetchList(): Promise<ListItem[] | undefined> {
   try {
-    const res = await fetch(`${import.meta.env.VITE_DB_URL}/lists`);
+    const res = await fetch(`${import.meta.env.VITE_DB_URL}/lists?_embed=color`);
 
     if (!res.ok) {
       throw new Error("Error in fetching task list, try again");
@@ -22,6 +23,44 @@ export async function fetchList(): Promise<ListItem[] | undefined> {
   } catch (error) {
     if (error instanceof Error) {
       console.error(error, error.message)
+    }
+  }
+}
+
+export async function addTask(name: string, colorId: number): Promise<ListItem | undefined> {
+  try {
+    const res = await fetch(`${import.meta.env.VITE_DB_URL}/lists`, {
+      method: "POST",
+      body: JSON.stringify({
+        id: crypto.randomUUID(),
+        name,
+        colorId
+      }),
+      headers: new Headers({
+        "Content-Type": "application/json"
+      })
+    });
+
+    if (!res.ok) {
+      throw new Error("Error in creating task, try again");
+    }
+
+    return res.json() as Promise<ListItem>
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error, error.message)
+    }
+  }
+}
+
+export async function deleteTask(id: string): Promise<void> {
+  try {
+    await fetch(`${import.meta.env.VITE_DB_URL}/lists/${id}`, {
+      method: "DELETE"
+    })
+  } catch (e) {
+    if (e instanceof Error) {
+      console.error(e, e.message)
     }
   }
 }
