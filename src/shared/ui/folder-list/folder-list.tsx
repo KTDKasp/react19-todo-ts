@@ -9,17 +9,19 @@ import { useTasks } from 'src/entities/task/use-tasks';
 type FolderListProps = React.HTMLAttributes<HTMLUListElement> & {
 	tasksPromise: Promise<ListItem[] | undefined>;
 	refetchTasks: () => void;
+	selectedTask: string;
+	setSelectedTask: (id: string) => void;
 };
 
 export function FolderList({
 	tasksPromise,
 	refetchTasks,
+	selectedTask,
+	setSelectedTask,
 	...props
 }: FolderListProps) {
 	const { useTasksList } = useTasks();
 	const tasks = useTasksList(tasksPromise);
-
-	const [selectedTask, setSelectedTask] = React.useState<string>('');
 
 	const handleDelete = (id: string) => {
 		startTransition(async () => {
@@ -29,7 +31,7 @@ export function FolderList({
 			});
 		});
 	};
-
+	
 	return (
 		<ul className={styles['folder-list']} {...props}>
 			{tasks?.map((task) => (

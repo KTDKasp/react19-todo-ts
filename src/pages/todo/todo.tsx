@@ -16,6 +16,7 @@ const defaultColorsPromise = fetchColors();
 export function Todo() {
 	const [tasksPromise, setTasksPromise] = useState(defaultListPromise);
 	const [isOpened, setIsOpened] = useState(false);
+	const [selectedTask, setSelectedTask] = useState<string>('');
 
 	const formInputRef = useRef<HTMLInputElement>(null);
 
@@ -33,9 +34,14 @@ export function Todo() {
 			<TodoSidebar>
 				<Button icon="list">Все задачи</Button>
 				<Suspense fallback={<div>Загрузка...</div>}>
-					<FolderList tasksPromise={tasksPromise} refetchTasks={refetchTasks} />
+					<FolderList
+						selectedTask={selectedTask}
+						setSelectedTask={setSelectedTask}
+						tasksPromise={tasksPromise}
+						refetchTasks={refetchTasks}
+					/>
 				</Suspense>
-				<Button onClick={handleClick} icon="add" color="grey">
+				<Button onClick={handleClick} icon="add">
 					Добавить папку
 				</Button>
 				<AddFolderForm
@@ -50,7 +56,7 @@ export function Todo() {
 					onClose={() => setIsOpened(false)}
 				/>
 			</TodoSidebar>
-			<TodoList />
+			<TodoList taskId={selectedTask} tasksPromise={tasksPromise} />
 		</div>
 	);
 }

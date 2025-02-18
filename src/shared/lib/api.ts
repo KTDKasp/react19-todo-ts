@@ -1,19 +1,27 @@
 export type ColorItem = {
-  id: number;
+  id: string;
   hex: string;
   name: string;
+}
+
+export type TodoItem = {
+  listId: string,
+  text: string,
+  completed: boolean,
+  id: string
 }
 
 export type ListItem = {
   id: string
   name: string;
-  colorId: number;
+  colorId: string;
   color: ColorItem
+  todos: TodoItem[];
 }
 
 export async function fetchList(): Promise<ListItem[] | undefined> {
   try {
-    const res = await fetch(`${import.meta.env.VITE_DB_URL}/lists?_embed=color`);
+    const res = await fetch(`${import.meta.env.VITE_DB_URL}/lists?_embed=color&_embed=todos`);
 
     if (!res.ok) {
       throw new Error("Error in fetching task list, try again");
@@ -22,12 +30,12 @@ export async function fetchList(): Promise<ListItem[] | undefined> {
     return res.json() as Promise<ListItem[]>
   } catch (error) {
     if (error instanceof Error) {
-      console.error(error, error.message)
+      console.error(error, error.message);
     }
   }
 }
 
-export async function addTask(name: string, colorId: number): Promise<ListItem | undefined> {
+export async function addTask(name: string, colorId: string): Promise<ListItem | undefined> {
   try {
     const res = await fetch(`${import.meta.env.VITE_DB_URL}/lists`, {
       method: "POST",

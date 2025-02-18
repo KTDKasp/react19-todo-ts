@@ -53,7 +53,7 @@ export function AddFolderForm({
 							type="radio"
 							name="color"
 							value={colorItem.id}
-							checked={color === colorItem.id.toString()}
+							checked={color === colorItem.id}
 							onChange={(e) => setColor(e.target.value)}
 						/>
 						<span

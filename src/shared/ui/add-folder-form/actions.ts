@@ -18,7 +18,7 @@ export function addFolder(
 
 		try {
 			startTransition(async () => {
-				await addTask(name, Number(colorId));
+				await addTask(name, colorId);
 				startTransition(() => {
 					refetchTasks();
 					setTask('');
