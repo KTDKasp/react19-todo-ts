@@ -67,12 +67,6 @@
       "completed": false
     },
     {
-      "listId": "2",
-      "text": "123",
-      "completed": true,
-      "id": "5"
-    },
-    {
       "listId": "1",
       "text": "test",
       "completed": false,
@@ -103,12 +97,6 @@
       "id": "10"
     },
     {
-      "listId": "2",
-      "text": "222",
-      "completed": true,
-      "id": "12"
-    },
-    {
       "listId": "7",
       "text": "Сделали сайдбар",
       "completed": true,
@@ -131,6 +119,12 @@
       "text": "tttt",
       "completed": false,
       "id": "18"
+    },
+    {
+      "id": "0df3ef33-82e8-412e-b100-b46ed6d1017e",
+      "text": "Вернуть книги в библиотеку",
+      "listId": "4",
+      "completed": false
     }
   ],
   "colors": [

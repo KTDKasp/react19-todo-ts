@@ -88,3 +88,42 @@ export async function fetchColors(): Promise<ColorItem[] | undefined> {
     }
   }
 }
+
+export async function addTodo(name: string, listId: string): Promise<TodoItem | undefined> {
+  try {
+    const res = await fetch(`${import.meta.env.VITE_DB_URL}/todos`, {
+      method: "POST",
+      body: JSON.stringify({
+        id: crypto.randomUUID(),
+        text: name,
+        listId,
+        completed: false
+      }),
+      headers: new Headers({
+        "Content-Type": "application/json"
+      })
+    })
+  
+    if (!res.ok) {
+      throw new Error("Error in creating task, try again");
+    }
+  
+    return res.json() as Promise<TodoItem>
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error, error.message);
+    }
+  }
+}
+
+export async function deleteTodo(id: string): Promise<void> {
+  try {
+    await fetch(`${import.meta.env.VITE_DB_URL}/todos/${id}`, {
+      method: "DELETE"
+    })
+  } catch(e) {
+    if (e instanceof Error) {
+      console.error(e, e.message)
+    }
+  }
+}

@@ -4,10 +4,21 @@
   border-radius: 4px;
   margin-bottom: 16px;
   width: 100%;
+	outline-color: #c1c1c1;
+  font-size: 14px;
+  color: #000000;
+}
+
+.input::placeholder {
+	color: #c7c7c7;
 }
 
 .actions {
   display: flex;
   gap: 10px;
   align-items: center;
+}
+
+.error {
+  color: red;
 }

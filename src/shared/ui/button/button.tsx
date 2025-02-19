@@ -6,7 +6,7 @@ import styles from "./button.module.css";
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   icon?: "list" | "add" | "null";
-  color?: "green" | "grey" | "ghost"
+  color?: "green" | "grey" | "ghost" | "white";
   children: React.ReactNode;
 }
 

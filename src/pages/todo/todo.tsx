@@ -32,7 +32,13 @@ export function Todo() {
 	return (
 		<div className={styles.todo}>
 			<TodoSidebar>
-				<Button icon="list">Все задачи</Button>
+				<Button
+					icon="list"
+					color={selectedTask === 'all-todos' ? 'white' : 'ghost'}
+					onClick={() => setSelectedTask('all-todos')}
+				>
+					Все задачи
+				</Button>
 				<Suspense fallback={<div>Загрузка...</div>}>
 					<FolderList
 						selectedTask={selectedTask}
@@ -56,7 +62,11 @@ export function Todo() {
 					onClose={() => setIsOpened(false)}
 				/>
 			</TodoSidebar>
-			<TodoList taskId={selectedTask} tasksPromise={tasksPromise} />
+			<TodoList
+				taskId={selectedTask}
+				tasksPromise={tasksPromise}
+				refetchTasks={refetchTasks}
+			/>
 		</div>
 	);
 }
