@@ -57,3 +57,12 @@
 .ghost {
   background-color: inherit;
 }
+
+.grey {
+  color: #9C9C9C;
+  background-color: #F4F6F8;
+}
+
+.grey:hover {
+  background-color: #dadada;
+}

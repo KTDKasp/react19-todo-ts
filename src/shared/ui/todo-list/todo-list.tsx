@@ -7,6 +7,7 @@ import CheckIcon from 'src/assets/check.svg?react';
 import PlusIcon from 'src/assets/plus.svg?react';
 import styles from './todo-list.module.css';
 import { cn } from 'src/shared/lib/css';
+import { AddTodoForm } from '../add-todo-form/add-todo-form';
 
 type TodoListProps = React.HTMLAttributes<HTMLDivElement> & {
 	taskId: string;
@@ -18,6 +19,13 @@ export function TodoList({ taskId, tasksPromise, ...props }: TodoListProps) {
 	const tasks = useTasksList(tasksPromise);
 
 	const task = tasks?.find((task) => task.id === taskId);
+	const [isTodoFormOpened, setIsTodoFormOpened] = React.useState(false);
+	const inputTodoRef = React.useRef<HTMLInputElement>(null);
+
+	const handleClick = () => {
+		setIsTodoFormOpened(true);
+		inputTodoRef.current?.focus();
+	}
 
 	return (
 		<>
@@ -66,10 +74,13 @@ export function TodoList({ taskId, tasksPromise, ...props }: TodoListProps) {
               ))}
 						</div>
 					)}
-					<button className={styles["add-todo"]}>
+					<button onClick={handleClick} className={styles["add-todo"]}>
 						<PlusIcon />
             <span>Новая задача</span>
 					</button>
+					{
+						isTodoFormOpened && <AddTodoForm ref={inputTodoRef} onClose={() => setIsTodoFormOpened(false)} />
+					}
 				</section>
 			)}
 		</>

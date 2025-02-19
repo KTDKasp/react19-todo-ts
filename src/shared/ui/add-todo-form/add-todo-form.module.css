@@ -1,0 +1,13 @@
+.input {
+  padding: 10px 15px;
+  border: 1px solid #efefef;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}

@@ -57,6 +57,7 @@
 }
 
 .todo {
+	width: 385px;
 	display: flex;
 	gap: 15px;
 	align-items: center;
@@ -141,4 +142,12 @@
 .add-todo svg {
 	width: 14px;
 	height: 14px;
+}
+
+.add-todo:hover {
+	color: #858585;
+}
+
+.add-todo:hover path {
+	stroke: #757575
 }

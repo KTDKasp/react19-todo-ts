@@ -43,7 +43,10 @@ export function FolderList({
 					onClick={() => setSelectedTask(task.id)}
 				>
 					<MarkerIcon className={styles[task.color.name]} />
-					<span className={styles.title}>{task.name}</span>
+					<span className={styles.title}>{task.name}
+						{
+							task.todos && ` (${task.todos.length})`
+						}</span>
 					{selectedTask === task.id && (
 						<button className={styles.delete} aria-label="Delete">
 							<DeleteIcon onClick={() => handleDelete(task.id)} />
