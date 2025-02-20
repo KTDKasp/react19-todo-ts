@@ -145,3 +145,19 @@
 .add-todo:hover path {
 	stroke: #757575;
 }
+
+.opened {
+  opacity: 1;
+  height: auto;
+  overflow: visible;
+	position: static;
+	z-index: 0;
+}
+
+.closed {
+	height: 0;
+  opacity: 0;
+  overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}

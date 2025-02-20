@@ -3,6 +3,7 @@ import { Button } from '../button/button';
 
 import styles from './add-todo-form.module.css';
 import { addTodoAction } from './actions';
+import { cn } from 'src/shared/lib/css';
 
 type AddTodoFormProps = React.FormHTMLAttributes<HTMLFormElement> & {
 	onClose: () => void;
@@ -11,13 +12,13 @@ type AddTodoFormProps = React.FormHTMLAttributes<HTMLFormElement> & {
 	ref?: React.Ref<HTMLInputElement>;
 };
 
-export function AddTodoForm({ ref, listId, onClose, refetchTasks, ...props }: AddTodoFormProps) {
+export function AddTodoForm({ ref, listId, onClose, refetchTasks, className, ...props }: AddTodoFormProps) {
 	const [todo, setTodo] = React.useState('');
 
   const [state, formAction, isPending] = React.useActionState(addTodoAction(refetchTasks, setTodo), undefined);
 
 	return (
-		<form className={styles.form} {...props}>
+		<form className={cn(styles.form, className)} {...props}>
 			<input
 				name="title"
 				ref={ref}

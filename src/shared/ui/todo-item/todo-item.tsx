@@ -8,6 +8,7 @@ import { AddTodoForm } from '../add-todo-form/add-todo-form';
 import styles from './todo-item.module.css';
 import React from 'react';
 import { deleteTodo, ListItem } from 'src/shared/lib/api';
+import { cn } from 'src/shared/lib/css';
 
 type TodoItemProps = { 
 	task: ListItem; 
@@ -75,19 +76,26 @@ export function TodoItem({ task, refetchTasks }: TodoItemProps) {
 				</div>
 			)}
 			<div className={styles["add-todo-block"]}>
-				{!isTodoFormOpened ? (
-					<button onClick={handleClick} className={styles['add-todo']}>
+				
+					<button onClick={handleClick} className={cn(styles['add-todo'], {
+							[styles.opened]: !isTodoFormOpened,
+							[styles.closed]: isTodoFormOpened,
+						})}>
 						<PlusIcon />
 						<span>Новая задача</span>
 					</button>
-				) : (
+		
 					<AddTodoForm
 						refetchTasks={refetchTasks}
 						listId={task.id}
 						ref={inputTodoRef}
 						onClose={() => setIsTodoFormOpened(false)}
+						className={cn({
+							[styles.opened]: isTodoFormOpened,
+							[styles.closed]: !isTodoFormOpened,
+						})}
 					/>
-				)}
+	
 			</div>
 		</>
 	);
