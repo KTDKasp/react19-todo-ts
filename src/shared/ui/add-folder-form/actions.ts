@@ -3,7 +3,6 @@ import { addTask } from 'src/shared/lib/api';
 
 export function addFolder(
 	refetchTasks: () => void,
-	setTask: (title: string) => void
 ) {
 	return async function (prevState: unknown, formData: FormData) {
 		const name = formData.get('title') as string;
@@ -21,7 +20,6 @@ export function addFolder(
 				await addTask(name, colorId);
 				startTransition(() => {
 					refetchTasks();
-					setTask('');
 				});
 			});
 

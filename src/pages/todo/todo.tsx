@@ -16,7 +16,7 @@ const defaultColorsPromise = fetchColors();
 export function Todo() {
 	const [tasksPromise, setTasksPromise] = useState(defaultListPromise);
 	const [isOpened, setIsOpened] = useState(false);
-	const [selectedTask, setSelectedTask] = useState<string>('');
+	const [selectedTask, setSelectedTask] = useState<string>('all-todos');
 
 	const formInputRef = useRef<HTMLInputElement>(null);
 

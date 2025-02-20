@@ -7,13 +7,8 @@
     },
     {
       "id": "2",
-      "name": "Фронтенд",
+      "name": "Не фронтенд",
       "colorId": "4"
-    },
-    {
-      "id": "3",
-      "name": "Фильмы и сериалы",
-      "colorId": "3"
     },
     {
       "id": "4",
@@ -21,24 +16,9 @@
       "colorId": "2"
     },
     {
-      "id": "5",
-      "name": "Личное",
-      "colorId": "1"
-    },
-    {
-      "name": "Спорт",
-      "colorId": "3",
-      "id": "6"
-    },
-    {
       "name": "Курс по ReactJS ToDo",
       "colorId": "7",
       "id": "7"
-    },
-    {
-      "id": "b17778ff-b9f0-47cf-8613-ab29595b3ab7",
-      "name": "Movies",
-      "colorId": "6"
     }
   ],
   "todos": [

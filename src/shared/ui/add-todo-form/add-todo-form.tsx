@@ -13,9 +13,8 @@ type AddTodoFormProps = React.FormHTMLAttributes<HTMLFormElement> & {
 };
 
 export function AddTodoForm({ ref, listId, onClose, refetchTasks, className, ...props }: AddTodoFormProps) {
-	const [todo, setTodo] = React.useState('');
 
-  const [state, formAction, isPending] = React.useActionState(addTodoAction(refetchTasks, setTodo), undefined);
+  const [state, formAction, isPending] = React.useActionState(addTodoAction(refetchTasks), undefined);
 
 	return (
 		<form className={cn(styles.form, className)} {...props}>
@@ -25,8 +24,6 @@ export function AddTodoForm({ ref, listId, onClose, refetchTasks, className, ...
 				placeholder='Текст задачи'
 				className={styles.input}
 				type="text"
-				value={todo}
-				onChange={(e) => setTodo(e.target.value)}
 			/>
       <input type="hidden" name="listId" value={listId} />
 			<div className={styles.actions}>

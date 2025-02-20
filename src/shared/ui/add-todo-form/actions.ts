@@ -3,7 +3,6 @@ import { addTodo } from 'src/shared/lib/api';
 
 export function addTodoAction(
 	refetchTasks: () => void,
-	setTodo: (value: string) => void
 ) {
 	return async function (prevState: unknown, formData: FormData) {
 		const title = formData.get('title') as string;
@@ -21,7 +20,6 @@ export function addTodoAction(
 				await addTodo(title, listId);
 				startTransition(() => {
 					refetchTasks();
-					setTodo('');
 				});
 			});
 

@@ -25,11 +25,10 @@ export function AddFolderForm({
 }: AddFolderFormProps) {
 	const { useColorsList } = useColors();
 	const cololsList = useColorsList(taskColors);
-	const [task, setTask] = React.useState('');
 	const [color, setColor] = React.useState('');
 
 	const [state, formAction, isPending] = React.useActionState(
-		addFolder(refetchTasks, setTask),
+		addFolder(refetchTasks),
 		undefined
 	);
 
@@ -42,8 +41,6 @@ export function AddFolderForm({
 				placeholder="Название папки"
 				tabIndex={tabIndex}
 				name="title"
-				value={task}
-				onChange={(e) => setTask(e.target.value)}
 			/>
 			<div className={styles.colors}>
 				{cololsList?.map((colorItem) => (
