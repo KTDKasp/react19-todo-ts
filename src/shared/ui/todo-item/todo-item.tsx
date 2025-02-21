@@ -10,6 +10,7 @@ import styles from './todo-item.module.css';
 import React from 'react';
 import { deleteTodo, ListItem } from 'src/shared/lib/api';
 import { cn } from 'src/shared/lib/css';
+import { EditTodoForm } from '../edit-todo-form/edit-todo-form';
 
 type TodoItemProps = {
   task: ListItem;
@@ -19,6 +20,9 @@ type TodoItemProps = {
 export function TodoItem({ task, refetchTasks }: TodoItemProps) {
   const [isTodoFormOpened, setIsTodoFormOpened] = React.useState(false);
   const [isTitleFormOpened, setIsTitleFormOpened] = React.useState(false);
+  const [isEditFormOpened, setIsEditFormOpened] = React.useState(false);
+
+  const [selectedTodo, setSelectedTodo] = React.useState('');
   const inputTodoRef = React.useRef<HTMLInputElement>(null);
 
   const handleClick = () => {
@@ -61,33 +65,50 @@ export function TodoItem({ task, refetchTasks }: TodoItemProps) {
       {task.todos.length !== 0 && (
         <div className={styles['todo-list']}>
           {task.todos.map((todo) => (
-            <div className={styles['todo-block']} key={todo.id}>
-              <label className={styles.todo} htmlFor={todo.id}>
-                <input
-                  className={styles['real-check']}
-                  type="checkbox"
-                  name="todo"
-                  value={todo.id}
-                  id={todo.id}
-                  checked={todo.completed}
+            <>
+              {selectedTodo === todo.id && isEditFormOpened ? (
+                <EditTodoForm
+                  onClose={() => setIsEditFormOpened(false)}
+                  refetchTasks={refetchTasks}
+                  defaultText={todo.text}
+                  todoId={todo.id}
                 />
-                <span className={styles['custom-check']}>
-                  <CheckIcon className={styles.check} />
-                </span>
-                <span className={styles.text}>{todo.text}</span>
-              </label>
-              <div className={styles.actions}>
-                <button className={styles.action}>
-                  <EditIcon />
-                </button>
-                <button
-                  onClick={() => handleDelete(todo.id)}
-                  className={styles.action}
-                >
-                  <DeleteIcon />
-                </button>
-              </div>
-            </div>
+              ) : (
+                <div className={styles['todo-block']} key={todo.id}>
+                  <label className={styles.todo} htmlFor={todo.id}>
+                    <input
+                      className={styles['real-check']}
+                      type="checkbox"
+                      name="todo"
+                      value={todo.id}
+                      id={todo.id}
+                      checked={todo.completed}
+                    />
+                    <span className={styles['custom-check']}>
+                      <CheckIcon className={styles.check} />
+                    </span>
+                    <span className={styles.text}>{todo.text}</span>
+                  </label>
+                  <div className={styles.actions}>
+                    <button
+                      onClick={() => {
+                        setSelectedTodo(todo.id);
+                        setIsEditFormOpened(true);
+                      }}
+                      className={styles.action}
+                    >
+                      <EditIcon />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(todo.id)}
+                      className={styles.action}
+                    >
+                      <DeleteIcon />
+                    </button>
+                  </div>
+                </div>
+              )}
+            </>
           ))}
         </div>
       )}

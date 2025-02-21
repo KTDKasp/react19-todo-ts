@@ -60,12 +60,6 @@
     },
     {
       "listId": "1",
-      "text": "qweqwe",
-      "completed": true,
-      "id": "8"
-    },
-    {
-      "listId": "1",
       "text": "123",
       "completed": false,
       "id": "9"
@@ -102,7 +96,13 @@
     },
     {
       "id": "0df3ef33-82e8-412e-b100-b46ed6d1017e",
-      "text": "Вернуть книги в библиотеку",
+      "text": "Вернуть книги в читай город",
+      "listId": "4",
+      "completed": false
+    },
+    {
+      "id": "1a5ea4a8-3e47-4d85-bd7d-ff4bc563a482",
+      "text": "Подарить книгу \"Энн с двумя н\"",
       "listId": "4",
       "completed": false
     }
