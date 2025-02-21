@@ -8,7 +8,7 @@ import { EditTitleForm } from '../edit-title-form/edit-title-form';
 
 import styles from './todo-item.module.css';
 import React from 'react';
-import { deleteTodo, ListItem } from 'src/shared/lib/api';
+import { changeTodoStatus, deleteTodo, ListItem } from 'src/shared/lib/api';
 import { cn } from 'src/shared/lib/css';
 import { EditTodoForm } from '../edit-todo-form/edit-todo-form';
 
@@ -39,6 +39,15 @@ export function TodoItem({ task, refetchTasks }: TodoItemProps) {
     });
   };
 
+  const handleChangeStatus = (id: string, completed: boolean) => {
+    React.startTransition(async () => {
+      await changeTodoStatus(id, completed)
+      React.startTransition(() => {
+        refetchTasks();
+      })
+    })
+  }
+
   return (
     <>
       <div className={styles.header}>
@@ -65,7 +74,7 @@ export function TodoItem({ task, refetchTasks }: TodoItemProps) {
       {task.todos.length !== 0 && (
         <div className={styles['todo-list']}>
           {task.todos.map((todo) => (
-            <>
+            <div key={todo.id}>
               {selectedTodo === todo.id && isEditFormOpened ? (
                 <EditTodoForm
                   onClose={() => setIsEditFormOpened(false)}
@@ -74,7 +83,7 @@ export function TodoItem({ task, refetchTasks }: TodoItemProps) {
                   todoId={todo.id}
                 />
               ) : (
-                <div className={styles['todo-block']} key={todo.id}>
+                <div className={styles['todo-block']}>
                   <label className={styles.todo} htmlFor={todo.id}>
                     <input
                       className={styles['real-check']}
@@ -83,6 +92,7 @@ export function TodoItem({ task, refetchTasks }: TodoItemProps) {
                       value={todo.id}
                       id={todo.id}
                       checked={todo.completed}
+                      onChange={(e) => handleChangeStatus(e.target.value, !todo.completed)}
                     />
                     <span className={styles['custom-check']}>
                       <CheckIcon className={styles.check} />
@@ -108,7 +118,7 @@ export function TodoItem({ task, refetchTasks }: TodoItemProps) {
                   </div>
                 </div>
               )}
-            </>
+            </div>
           ))}
         </div>
       )}

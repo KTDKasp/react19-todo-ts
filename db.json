@@ -19,6 +19,11 @@
       "name": "Курс по ReactJS ToDo",
       "colorId": "7",
       "id": "7"
+    },
+    {
+      "id": "e0043ad7-b85d-4fa5-94bf-588b5782dd43",
+      "name": "Хобби и приколы",
+      "colorId": "6"
     }
   ],
   "todos": [
@@ -26,13 +31,13 @@
       "id": "1",
       "listId": "2",
       "text": "Изучить JavaScript",
-      "completed": true
+      "completed": false
     },
     {
       "id": "2",
       "listId": "2",
       "text": "Изучить паттерны проектирования",
-      "completed": false
+      "completed": true
     },
     {
       "id": "3",
@@ -49,7 +54,7 @@
     {
       "listId": "1",
       "text": "test",
-      "completed": false,
+      "completed": true,
       "id": "6"
     },
     {
@@ -61,7 +66,7 @@
     {
       "listId": "1",
       "text": "123",
-      "completed": false,
+      "completed": true,
       "id": "9"
     },
     {
@@ -79,7 +84,7 @@
     {
       "listId": "7",
       "text": "Сделали список задач",
-      "completed": true,
+      "completed": false,
       "id": "16"
     },
     {
@@ -98,13 +103,19 @@
       "id": "0df3ef33-82e8-412e-b100-b46ed6d1017e",
       "text": "Вернуть книги в читай город",
       "listId": "4",
-      "completed": false
+      "completed": true
     },
     {
       "id": "1a5ea4a8-3e47-4d85-bd7d-ff4bc563a482",
       "text": "Подарить книгу \"Энн с двумя н\"",
       "listId": "4",
       "completed": false
+    },
+    {
+      "id": "9940002a-a1f9-4b48-a5f3-209b5e457a3d",
+      "text": "Научиться игре на гитаре!",
+      "listId": "e0043ad7-b85d-4fa5-94bf-588b5782dd43",
+      "completed": true
     }
   ],
   "colors": [

@@ -171,3 +171,25 @@ export async function editTodo(id: string, text: string) {
     }
   }
 }
+
+export async function changeTodoStatus(id: string, completed: boolean) {
+  try {
+    const res = await fetch(`${import.meta.env.VITE_DB_URL}/todos/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        completed
+      }),
+      headers: new Headers({
+        "Content-Type": "application/json"
+      })
+    })
+  
+    if (!res.ok) {
+      throw new Error("Error in editing task title, try again");
+    }
+  } catch (e) {
+    if (e instanceof Error) {
+      console.error(e, e.message);
+    }
+  }
+}
