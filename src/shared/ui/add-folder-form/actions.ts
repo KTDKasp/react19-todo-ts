@@ -4,7 +4,7 @@ import { addTask } from 'src/shared/lib/api';
 export function addFolder(
 	refetchTasks: () => void,
 ) {
-	return async function (prevState: unknown, formData: FormData) {
+	return async function (_: unknown, formData: FormData) {
 		const name = formData.get('title') as string;
 		const colorId = formData.get('color') as string;
 

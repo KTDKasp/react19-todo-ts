@@ -2,7 +2,7 @@ import { startTransition } from "react";
 import { editTaskTitle } from "src/shared/lib/api";
 
 export function editTitle(refetchTasks: () => void) {
-  return async function(prevState: unknown, formData: FormData) {
+  return async function(_: unknown, formData: FormData) {
     const title = formData.get("task") as string;
     const taskId = formData.get("taskId") as string;
     if (!title.trim()) {

@@ -4,7 +4,7 @@ import { addTodo } from 'src/shared/lib/api';
 export function addTodoAction(
 	refetchTasks: () => void,
 ) {
-	return async function (prevState: unknown, formData: FormData) {
+	return async function (_: unknown, formData: FormData) {
 		const title = formData.get('title') as string;
 		const listId = formData.get('listId') as string;
 
