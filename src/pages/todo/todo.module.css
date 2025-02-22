@@ -3,6 +3,7 @@
   min-height: 530px;
   height: fit-content;
   min-width: 750px;
+  width: calc(100dvw - 100px);
   box-shadow: 1px 2px 20px #f3f3f3;
   border-radius: 10px;
   border: 1px solid var(--light-grey);

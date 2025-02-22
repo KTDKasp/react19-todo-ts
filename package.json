@@ -11,14 +11,16 @@
     "server": "json-server --port 3003 db.json"
   },
   "dependencies": {
+    "@tanstack/react-router": "^1.109.2",
     "clsx": "^2.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router": "^7.1.5",
     "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
+    "@tanstack/router-devtools": "^1.109.2",
+    "@tanstack/router-plugin": "^1.109.2",
     "@types/node": "^22.13.4",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
