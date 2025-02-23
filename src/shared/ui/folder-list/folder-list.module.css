@@ -13,6 +13,7 @@
   cursor: pointer;
   align-items: center;
   padding: 10px 12px;
+  font-weight: 600;
 }
 
 .list-element:hover {

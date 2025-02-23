@@ -2,9 +2,9 @@ import React from 'react';
 import { ListItem } from 'src/shared/lib/api';
 import { useTasks } from 'src/entities/task/use-tasks';
 
-import styles from './todo-list.module.css';
 import { cn } from 'src/shared/lib/css';
 import { TodoItem } from '../todo-item/todo-item';
+import styles from './todo-list.module.css';
 
 type TodoListProps = React.HTMLAttributes<HTMLDivElement> & {
 	taskId: string;
@@ -29,7 +29,10 @@ export function TodoList({
 			})}
 			{...props}
 		>
-			{taskId === "all-todos" ? (
+			{tasks?.length === 0 && (
+				<h2 className={styles.title}>Задачи отсутствуют</h2>
+			)}
+			{taskId === 'all-todos' ? (
 				<>
 					{tasks?.map((task) => (
 						<div key={task.id}>
@@ -40,7 +43,7 @@ export function TodoList({
 			) : (
 				<>
 					{!findedTask ? (
-						<h2 className={styles.title}>Задачи отсутствуют</h2>
+						<></>
 					) : (
 						<div>
 							<TodoItem task={findedTask} refetchTasks={refetchTasks} />

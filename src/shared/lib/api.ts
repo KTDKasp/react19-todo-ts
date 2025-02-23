@@ -35,6 +35,22 @@ export async function fetchList(): Promise<ListItem[] | undefined> {
   }
 }
 
+export async function fetchTask(taskId: string): Promise<ListItem | undefined> {
+  try {
+    const res = await fetch(`${import.meta.env.VITE_DB_URL}/lists/${taskId}?_embed=color&_embed=todos`);
+
+    if (!res.ok) {
+      throw new Error("Error in fetching task list, try again");
+    }
+
+    return res.json() as Promise<ListItem>
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error, error.message);
+    }
+  }
+}
+
 export async function addTask(name: string, colorId: string): Promise<ListItem | undefined> {
   try {
     const res = await fetch(`${import.meta.env.VITE_DB_URL}/lists`, {
